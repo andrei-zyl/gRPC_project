@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package sum;
+
+service SumService {
+    rpc Sum (SumRequest) returns (SumResponse) {};
+    rpc SumManyTimes (SumManyTimesRequest) returns (stream SumManyTimesResponse) {};
+    rpc Average (stream AverageRequest) returns (AverageResponse) {};
+    rpc MaxNumber (stream MaxNumberRequest) returns (stream MaxNumberResponse) {};
+    rpc SquareRoot (SquareRootRequest) returns (SquareRootResponse) {};
+}
+
+message Adding {
+    int32 first = 1;
+    int32 second = 2;
+}
+
+message SumRequest {
+    Adding add_request = 1;
+}
+
+message SumManyTimesRequest {
+    Adding add_request = 1;
+}
+
+message SumResponse {
+    int32 result = 1;
+}
+
+message SumManyTimesResponse {
+    int32 result = 1;
+}
+
+message AverageArray {
+    int32 array = 1;
+}
+
+message AverageRequest {
+    AverageArray average_array = 1;
+}
+
+message AverageResponse {
+    float result = 1;
+}
+
+message MaxNumber {
+    int32 number = 1;
+}
+
+message MaxNumberRequest {
+    MaxNumber max_number = 1;
+}
+
+message MaxNumberResponse {
+    int32 result = 1;
+}
+
+message SquareRootRequest {
+    int32 number = 1;
+}
+
+message SquareRootResponse {
+    int32 number_root = 1;
+}
